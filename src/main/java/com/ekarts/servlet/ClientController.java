@@ -70,8 +70,8 @@ private static final long serialVersionUID = -7558166539389234332L;
 		session.setAttribute("totalClientes", clientes.size());
 		session.setAttribute("saldoTotal", this.calcularSaldoTotal(clientes));
 
-		// request.getRequestDispatcher("frmClient.jsp").forward(request, response);
-		response.sendRedirect("frmClient.jsp");
+		// request.getRequestDispatcher("main.jsp").forward(request, response);
+		response.sendRedirect("main.jsp");
 	}
 
 	private void editClient(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

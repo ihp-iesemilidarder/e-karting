@@ -24,7 +24,7 @@
 			    <div class="container">
 			        <div class="row">
 			            <div class="col-md-3">
-			                <a href="frmClient.jsp" class="btn btn-ligth btn-block">
+			                <a href="main.jsp" class="btn btn-ligth btn-block">
 			                    <i class="fas fa-arrow-left"></i> Regresar a la lista
 			                </a>
 			            </div>

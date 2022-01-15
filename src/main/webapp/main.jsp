@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/f90d3bf50d.js" crossorigin="anonymous"></script>
 
-        <title>Control de Clientes</title>
+        <title>Control de Clientes y Karts</title>
         <style>
         	.fondo{
         		background:url("img/bg_header.jpg") no-repeat;
@@ -47,14 +47,26 @@
 		                    <i class="fas fa-eye"></i> Ver Clientes
 		                </a>
 		            </div>
+		          	<div class="col-md-3">
+		                <a href="#" class="btn btn-primary btn-block"
+		                   data-toggle="modal" data-target="#agregarKartModal">
+		                    <i class="fas fa-plus"></i> Agregar Kart
+		                </a>
+		            </div>
+		            <div class="col-md-3">
+		                <a href="${pageContext.request.contextPath}/kart?action=list" class="btn btn-primary btn-block">
+		                    <i class="fas fa-eye"></i> Ver Karts
+		                </a>
+		            </div>
 		        </div>
 		    </div>
 		</section>
 
         <!--Listado Clientes --> 
         <jsp:include page="/listClients.jsp"/>
+        <jsp:include page="/listKarts.jsp"/>
         
-        <!-- Agregar cliente MODAL -->
+        <!-- Agregar MODALS -->
 		<jsp:include page="/addClient.jsp"/>
 
         <!--Footer-->
