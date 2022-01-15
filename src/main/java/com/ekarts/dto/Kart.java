@@ -18,6 +18,12 @@ public class Kart {
 		this.kar_power = kar_power;
 		this.kar_price_minute = kar_price_minute;
 	}
+	public Kart(String kar_name, TipusKart kar_tipus, double kar_power, double kar_price_minute) {
+		this.kar_name = kar_name;
+		this.kar_tipus = kar_tipus;
+		this.kar_power = kar_power;
+		this.kar_price_minute = kar_price_minute;
+	}
 
 	public String getKar_name() {
 		return kar_name;

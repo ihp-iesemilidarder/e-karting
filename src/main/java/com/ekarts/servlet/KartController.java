@@ -77,7 +77,7 @@ private static final long serialVersionUID = -7558166539389234332L;
 	}
 
 	private void editKart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// recuperamos el idKarte
+		// recuperamos el idKart
 		int idKart = Integer.parseInt(request.getParameter("idKart"));
 		Kart kart = new KartDao().findById(idKart);
 		request.setAttribute("kart", kart);
@@ -90,7 +90,6 @@ private static final long serialVersionUID = -7558166539389234332L;
 		//request.setCharacterEncoding("UTF-8");
 		
 		// recuperamos los valores del formulario agregarKarte
-		int id = Integer.parseInt(request.getParameter("id"));
 		String name = request.getParameter("name");
 		String nameTipus = request.getParameter("tipus");
 		TipusKart tipus = new TipusKartDao().findByName(nameTipus);
@@ -106,11 +105,11 @@ private static final long serialVersionUID = -7558166539389234332L;
 		}
 
 		// Creamos el objeto de kart (modelo)
-		Kart kart = new Kart(id,name,tipus,power,price);
+		Kart kart = new Kart(name,tipus,power,price);
 
 		// Insertamos el nuevo objeto en la base de datos
 		int registrosModificados = new KartDao().create(kart);
-		System.out.println("Registres modificats:" + registrosModificados);
+		System.out.println("Registres insertats:" + registrosModificados);
 
 		// Redirigimos hacia accion por default
 		this.showListKart(request, response);

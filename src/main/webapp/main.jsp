@@ -68,6 +68,7 @@
         
         <!-- Agregar MODALS -->
 		<jsp:include page="/addClient.jsp"/>
+		<jsp:include page="/addKart.jsp"/>
 
         <!--Footer-->
         <jsp:include page="/common/footer.jsp" /> 

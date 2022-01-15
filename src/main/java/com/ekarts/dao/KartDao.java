@@ -91,19 +91,18 @@ public class KartDao {
 	 * 
 	 */
 	public int create(Kart kart) {
-		String SQL_INSERT = "INSERT INTO kart(kar_id, kar_name, kar_tipus, kar_power, kar_price_minute) "
-				+ " VALUES(?, ?, ?, ?, ?)";
+		String SQL_INSERT = "INSERT INTO kart(kar_name, kar_tipus, kar_power, kar_price_minute) "
+				+ " VALUES(?, ?, ?, ?)";
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		int rows = 0;
 		try {
 			conn = DBConnection.getConnection();
 			stmt = conn.prepareStatement(SQL_INSERT);
-			stmt.setInt(1, kart.getKar_id());
-			stmt.setString(2, kart.getKar_name());
-			stmt.setString(3, kart.getKar_tipus().toString());
-			stmt.setDouble(4, kart.getKar_power());
-			stmt.setDouble(5, kart.getKar_price_minute());
+			stmt.setString(1, kart.getKar_name());
+			stmt.setString(2, kart.getKar_tipus().getTka_name());
+			stmt.setDouble(3, kart.getKar_power());
+			stmt.setDouble(4, kart.getKar_price_minute());
 
 			rows = stmt.executeUpdate();
 		} catch (SQLException ex) {
@@ -121,20 +120,18 @@ public class KartDao {
 	 */
 	public int update(Kart kart) {
 		String SQL_UPDATE = "UPDATE kart "
-				+ " SET kart_name=?, kar_tipus=?, kar_power=?, kar_price_minute=? WHERE kar_id=?";
+				+ " SET kar_name=?, kar_tipus=?, kar_power=?, kar_price_minute=? WHERE kar_id=?";
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		int rows = 0;
 		try {
 			conn = DBConnection.getConnection();
 			stmt = conn.prepareStatement(SQL_UPDATE);
-			int i = 1;
-			stmt.setString(i++, kart.getKar_name());
-			stmt.setString(i++, kart.getKar_tipus().getTka_name());
-			stmt.setDouble(i++, kart.getKar_power());
-			stmt.setDouble(i++, kart.getKar_price_minute());
-			stmt.setInt(i++, kart.getKar_id());
-
+			stmt.setString(1, kart.getKar_name());
+			stmt.setString(2, kart.getKar_tipus().getTka_name());
+			stmt.setDouble(3, kart.getKar_power());
+			stmt.setDouble(4, kart.getKar_price_minute());
+			stmt.setInt(5, kart.getKar_id());
 			rows = stmt.executeUpdate();
 		} catch (SQLException ex) {
 			ex.printStackTrace(System.out);
