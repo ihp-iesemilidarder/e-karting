@@ -2,6 +2,7 @@ package com.ekarts.servlet;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -71,6 +72,9 @@ private static final long serialVersionUID = -7558166539389234332L;
 		session.setAttribute("karts", karts);
 		session.setAttribute("totalKarts", karts.size());
 		session.setAttribute("priceKartTotal", this.calcularSaldoTotal(karts));
+		List<TipusKart> tipusKarts = new TipusKartDao().listar();
+		System.out.println(tipusKarts);
+		request.setAttribute("tipoKarts", tipusKarts);
 
 		// request.getRequestDispatcher("frmKart.jsp").forward(request, response);
 		response.sendRedirect("main.jsp");
@@ -80,6 +84,8 @@ private static final long serialVersionUID = -7558166539389234332L;
 		// recuperamos el idKart
 		int idKart = Integer.parseInt(request.getParameter("idKart"));
 		Kart kart = new KartDao().findById(idKart);
+		List<TipusKart> tipusKarts = new TipusKartDao().listar();
+		request.setAttribute("tipoKarts", tipusKarts);
 		request.setAttribute("kart", kart);
 		String jspEditar = "/editKart.jsp";
 		request.getRequestDispatcher(jspEditar).forward(request, response);

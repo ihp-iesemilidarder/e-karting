@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="modal fade" id="agregarKartModal">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -16,7 +17,11 @@
                     </div>
                     <div class="form-group">
                         <label for="tipus">Tipo</label>
-                        <input type="text" class="form-control" name="tipus" required />
+                        <select name="tipus" class="form-control" required>
+	                        <c:forEach items="${tipoKarts}" var="tipo">
+	                        	<option value="${tipo.tka_name}"><c:out value="${tipo.tka_name}"></c:out></option>
+	                        </c:forEach>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="power">Potencia</label>

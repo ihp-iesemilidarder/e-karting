@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -53,13 +54,24 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="nombre">Nombre</label>
-                                        <input type="text" class="form-control" name="name" required value="${kart.getKar_name()}">
-                                        <label for="tipus">Tipo</label>
-                                        <input type="text" class="form-control" name="tipus" required value="${kart.getKar_tipus().getTka_name()}">
+                                        <input type="text" class="form-control" name="name" required value="${kart.kar_name}">
+                                        <label for="tipus">Tipo</label>           
+                                        <select name="tipus" class="form-control" required>
+                                        	<c:forEach items="${tipoKarts}" var="tipo">
+                                        		<c:choose>
+                                        			<c:when test="${tipo.tka_name==kart.kar_tipus.tka_name}">
+                                        				<option value="${tipo.tka_name}" selected><c:out value="${tipo.tka_name}"></c:out></option>
+                                        			</c:when>
+                                        			<c:otherwise>
+                                        				<option value="${tipo.tka_name}"><c:out value="${tipo.tka_name}"></c:out></option>
+                                        			</c:otherwise>
+                                        		</c:choose>
+                                        	</c:forEach>
+                                        </select>
                                         <label for="power">Potencia</label>
-                                        <input type="number" class="form-control" name="power" required value="${kart.getKar_power()}" step="any">
+                                        <input type="number" class="form-control" name="power" required value="${kart.kar_power}" step="any">
                                         <label for="price">Precio por minuto</label>
-                                        <input type="number" class="form-control" name="price" required value="${kart.getKar_price_minute()}" step="any">
+                                        <input type="number" class="form-control" name="price" required value="${kart.kar_price_minute}" step="any">
                                     </div>
                                 </div>
                             </div>
