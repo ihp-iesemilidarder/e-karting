@@ -72,10 +72,6 @@ private static final long serialVersionUID = -7558166539389234332L;
 		session.setAttribute("karts", karts);
 		session.setAttribute("totalKarts", karts.size());
 		session.setAttribute("priceKartTotal", this.calcularSaldoTotal(karts));
-		List<TipusKart> tipusKarts = new TipusKartDao().listar();
-		System.out.println(tipusKarts);
-		request.setAttribute("tipoKarts", tipusKarts);
-
 		// request.getRequestDispatcher("frmKart.jsp").forward(request, response);
 		response.sendRedirect("main.jsp");
 	}
@@ -112,7 +108,6 @@ private static final long serialVersionUID = -7558166539389234332L;
 
 		// Creamos el objeto de kart (modelo)
 		Kart kart = new Kart(name,tipus,power,price);
-
 		// Insertamos el nuevo objeto en la base de datos
 		int registrosModificados = new KartDao().create(kart);
 		System.out.println("Registres insertats:" + registrosModificados);

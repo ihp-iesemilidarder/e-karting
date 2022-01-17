@@ -99,32 +99,6 @@ public class TipusKartDao {
 	}
 
 	/*
-	 * Modifica un tipus kart de la base de dades
-	 * 
-	 */
-	public int update(TipusKart tipusKart) {
-		String SQL_UPDATE = "UPDATE tipus_kart "
-				+ " SET kar_name=? WHERE kar_name=?";
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		int rows = 0;
-		try {
-			conn = DBConnection.getConnection();
-			stmt = conn.prepareStatement(SQL_UPDATE);
-			int i = 1;
-			stmt.setString(i++, tipusKart.getTka_name());
-
-			rows = stmt.executeUpdate();
-		} catch (SQLException ex) {
-			ex.printStackTrace(System.out);
-		} finally {
-			DBConnection.close(stmt);
-			DBConnection.close(conn);
-		}
-		return rows;
-	}
-
-	/*
 	 * Esborra un tipus kart de la base de dades
 	 * 
 	 */

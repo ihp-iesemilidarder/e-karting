@@ -42,20 +42,16 @@
 		                    <i class="fas fa-plus"></i> Agregar Cliente
 		                </a>
 		            </div>
-		            <div class="col-md-3">
-		                <a href="${pageContext.request.contextPath}/client?action=list" class="btn btn-primary btn-block">
-		                    <i class="fas fa-eye"></i> Ver Clientes
-		                </a>
-		            </div>
 		          	<div class="col-md-3">
 		                <a href="#" class="btn btn-primary btn-block"
 		                   data-toggle="modal" data-target="#agregarKartModal">
 		                    <i class="fas fa-plus"></i> Agregar Kart
 		                </a>
 		            </div>
-		            <div class="col-md-3">
-		                <a href="${pageContext.request.contextPath}/kart?action=list" class="btn btn-primary btn-block">
-		                    <i class="fas fa-eye"></i> Ver Karts
+        		    <div class="col-md-3">
+		                <a href="#" class="btn btn-primary btn-block"
+		                   data-toggle="modal" data-target="#agregarTipusKartModal">
+		                    <i class="fas fa-plus"></i> Agregar tipus de kart
 		                </a>
 		            </div>
 		        </div>
@@ -65,14 +61,17 @@
         <!--Listado Clientes --> 
         <jsp:include page="/listClients.jsp"/>
         <jsp:include page="/listKarts.jsp"/>
+        <jsp:include page="/listTipusKarts.jsp"/>
         
         <!-- Agregar MODALS -->
 		<jsp:include page="/addClient.jsp"/>
 		<jsp:include page="/addKart.jsp"/>
+		<jsp:include page="/addTipusKart.jsp"/>
 
         <!--Footer-->
         <jsp:include page="/common/footer.jsp" /> 
 
+		<script src="js/app.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

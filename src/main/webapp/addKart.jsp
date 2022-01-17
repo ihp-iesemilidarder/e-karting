@@ -16,7 +16,7 @@
                         <input type="text" class="form-control" name="name" required />
                     </div>
                     <div class="form-group">
-                        <label for="tipus">Tipo</label>
+                        <label for="tipus">Tipo ${tipoKarts }</label>
                         <select name="tipus" class="form-control" required>
 	                        <c:forEach items="${tipoKarts}" var="tipo">
 	                        	<option value="${tipo.tka_name}"><c:out value="${tipo.tka_name}"></c:out></option>

@@ -59,7 +59,7 @@
                     <div class="card-body">
                         <h3>Total Karts</h3>
                         <h4 class="display-4">
-                            <i class="fas fa-users"></i> ${totalKarts}
+                            <i class="fas fa-car-side"></i> ${totalKarts}
                         </h4>
                     </div>
                 </div>        
