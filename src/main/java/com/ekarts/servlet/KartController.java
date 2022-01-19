@@ -71,6 +71,8 @@ private static final long serialVersionUID = -7558166539389234332L;
 		HttpSession session = request.getSession();
 		session.setAttribute("karts", karts);
 		session.setAttribute("totalKarts", karts.size());
+		List<TipusKart> tipusKarts = new TipusKartDao().listar();
+		session.setAttribute("tipoKarts", tipusKarts);
 		session.setAttribute("priceKartTotal", this.calcularSaldoTotal(karts));
 		// request.getRequestDispatcher("frmKart.jsp").forward(request, response);
 		response.sendRedirect("main.jsp");

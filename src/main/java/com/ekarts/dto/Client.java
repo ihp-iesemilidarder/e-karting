@@ -10,13 +10,6 @@ public class Client implements Serializable{
     private String phone;
     private double balance;
 
-    public Client() {
-    }
-
-	public Client(int id) {
-		this.id = id;
-	}
-
 	public Client(int id, String name, String surname, String email, String phone, double balance) {
 		this.id = id;
 		this.name = name;
@@ -25,15 +18,21 @@ public class Client implements Serializable{
 		this.phone = phone;
 		this.balance = balance;
 	}
-
+	
 	public Client(String name, String surname, String email, String phone, double balance) {
-		super();
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
 		this.phone = phone;
 		this.balance = balance;
 	}
+	
+	public Client(int id) {
+		this.id = id;
+	}
+	
+    public Client() {
+    }
 
 	public int getId() {
 		return id;

@@ -77,7 +77,7 @@ private static final long serialVersionUID = -7558166539389234332L;
 	private void editClient(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// recuperamos el idCliente
 		int idCliente = Integer.parseInt(request.getParameter("idClient"));
-		Client cliente = new ClientDao().findById(new Client(idCliente));
+		Client cliente = new ClientDao().findById(idCliente);
 		request.setAttribute("cliente", cliente);
 		String jspEditar = "/editClient.jsp";
 		request.getRequestDispatcher(jspEditar).forward(request, response);

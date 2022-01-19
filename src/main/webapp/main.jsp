@@ -54,6 +54,12 @@
 		                    <i class="fas fa-plus"></i> Agregar tipus de kart
 		                </a>
 		            </div>
+		            <div class="col-md-3">
+		                <a href="#" class="btn btn-primary btn-block"
+		                   data-toggle="modal" data-target="#agregarCarreraModal">
+		                    <i class="fas fa-plus"></i> Agregar carrera
+		                </a>
+		            </div>
 		        </div>
 		    </div>
 		</section>
@@ -62,11 +68,13 @@
         <jsp:include page="/listClients.jsp"/>
         <jsp:include page="/listKarts.jsp"/>
         <jsp:include page="/listTipusKarts.jsp"/>
+        <jsp:include page="/listCliKar.jsp"/>
         
         <!-- Agregar MODALS -->
 		<jsp:include page="/addClient.jsp"/>
 		<jsp:include page="/addKart.jsp"/>
 		<jsp:include page="/addTipusKart.jsp"/>
+		<jsp:include page="/addCliKart.jsp"/>
 
         <!--Footer-->
         <jsp:include page="/common/footer.jsp" /> 

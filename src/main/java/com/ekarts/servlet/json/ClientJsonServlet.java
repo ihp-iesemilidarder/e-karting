@@ -33,7 +33,7 @@ public class ClientJsonServlet extends HttpServlet {
 		if (servletPath.equals("/client.json")) {
 			if (sId!=null) {
 				int id = Integer.parseInt(sId);
-				Client cliente = new ClientDao().findById(new Client(id));;
+				Client cliente = new ClientDao().findById(id);
 				
 				ObjectMapper mapper = new ObjectMapper(); 
 				String jsonResult = mapper.writeValueAsString(cliente);

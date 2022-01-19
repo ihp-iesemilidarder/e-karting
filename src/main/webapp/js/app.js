@@ -1,7 +1,8 @@
 const main=()=>{
 	loadClients();
 	loadKarts();
-	loadTipusKarts();	
+	loadTipusKarts();
+	loadCliKart();	
 }
 
 const loadTipusKarts=()=>{
@@ -14,6 +15,10 @@ const loadKarts=()=>{
 
 const loadClients=()=>{
 	fetch("./client?action=list");
+}
+
+const loadCliKart=()=>{
+	fetch("./clikar?action=list");
 }
 
 main();
