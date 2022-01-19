@@ -15,6 +15,7 @@
                         <thead class="thead-dark">
                             <tr>
                                 <th>#</th>
+                                <th>NIF</th>
                                 <th>Nombre</th>
                                 <th>Saldo</th>
                                 <th></th>
@@ -25,8 +26,21 @@
                             <c:forEach var="cliente" items="${clientes}" varStatus="status" >
                                 <tr>
                                     <td>${status.count}</td>
+                                    <td>${cliente.nif}</td>
                                     <td>${cliente.name} ${cliente.surname}</td>
-                                    <td> <fmt:formatNumber value="${cliente.balance}" type="currency" currencySymbol="€"/></td>
+                                    <td>
+                                    <c:choose>
+                                    	<c:when test="${cliente.balance==0 }">
+                                    		<font color="red"><fmt:formatNumber value="${cliente.balance}" type="currency" currencySymbol="€"/></font>
+                                    	</c:when>
+                                    	<c:when test="${cliente.balance>=3000 }">
+                                    		<font color="darkkhaki"><fmt:formatNumber value="${cliente.balance}" type="currency" currencySymbol="€"/></font>
+                                    	</c:when>
+                                    	<c:otherwise>
+                                    		<fmt:formatNumber value="${cliente.balance}" type="currency" currencySymbol="€"/>
+                                    	</c:otherwise>
+                                    </c:choose>
+                                    </td>
                                     <td>
                                         <a href="${pageContext.request.contextPath}/client?action=edit&idClient=${cliente.id}"
                                            class="btn btn-secondary">

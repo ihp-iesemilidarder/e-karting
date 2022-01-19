@@ -52,6 +52,10 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="form-group">
+                                        <label for="nif">NIF</label>
+                                        <input type="text" class="form-control" name="nif" required value="${cliente.nif}">
+                                    </div>
+                                    <div class="form-group">
                                         <label for="nombre">Nombre</label>
                                         <input type="text" class="form-control" name="nombre" required value="${cliente.name}">
                                     </div>

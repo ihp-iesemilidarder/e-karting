@@ -16,7 +16,8 @@ public class ClientDao {
 	 * 
 	 */
 	public List<Client> listar() {
-		String SQL_SELECT = "SELECT cli_id, cli_name, cli_surname, cli_email, cli_phone, cli_balance " + " FROM client";
+		String SQL_SELECT = "SELECT cli_id, cli_name, cli_surname, cli_email, cli_phone, cli_balance, cli_nif " + " FROM client";
+		System.out.println(SQL_SELECT);
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -34,8 +35,9 @@ public class ClientDao {
 				String email = rs.getString("cli_email");
 				String phone = rs.getString("cli_phone");
 				double balance = rs.getDouble("cli_balance");
+				String nif = rs.getString("cli_nif");
 
-				client = new Client(id, name, surname, email, phone, balance);
+				client = new Client(id, nif,name, surname, email, phone, balance);
 				clients.add(client);
 			}
 		} catch (SQLException ex) {
@@ -53,7 +55,7 @@ public class ClientDao {
 	 * 
 	 */
 	public Client findById(int idClient) {
-		String SQL_SELECT_BY_ID = "SELECT cli_id, cli_name, cli_surname, cli_email, cli_phone, cli_balance "
+		String SQL_SELECT_BY_ID = "SELECT cli_id, cli_name, cli_surname, cli_email, cli_phone, cli_balance, cli_nif "
 				+ " FROM client WHERE cli_id = ?";
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -71,8 +73,9 @@ public class ClientDao {
 			String email = rs.getString("cli_email");
 			String phone = rs.getString("cli_phone");
 			double balance = rs.getDouble("cli_balance");
+			String nif = rs.getString("cli_nif");
 
-			client = new Client(id,name,surname,email,phone,balance);
+			client = new Client(id,nif,name,surname,email,phone,balance);
 
 		} catch (SQLException ex) {
 			ex.printStackTrace(System.out);
@@ -89,8 +92,9 @@ public class ClientDao {
 	 * 
 	 */
 	public int create(Client client) {
-		String SQL_INSERT = "INSERT INTO client(cli_name, cli_surname, cli_email, cli_phone, cli_balance) "
-				+ " VALUES(?, ?, ?, ?, ?)";
+		System.out.println("cliente a insertar: "+client);
+		String SQL_INSERT = "INSERT INTO client(cli_name, cli_surname, cli_email, cli_phone, cli_balance,cli_nif) "
+				+ " VALUES(?, ?, ?, ?, ?, ?)";
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		int rows = 0;
@@ -102,6 +106,7 @@ public class ClientDao {
 			stmt.setString(3, client.getEmail());
 			stmt.setString(4, client.getPhone());
 			stmt.setDouble(5, client.getBalance());
+			stmt.setString(6, client.getNif());
 
 			rows = stmt.executeUpdate();
 		} catch (SQLException ex) {
@@ -119,7 +124,7 @@ public class ClientDao {
 	 */
 	public int update(Client client) {
 		String SQL_UPDATE = "UPDATE client "
-				+ " SET cli_name=?, cli_surname=?, cli_email=?, cli_phone=?, cli_balance=? WHERE cli_id=?";
+				+ " SET cli_nif=?, cli_name=?, cli_surname=?, cli_email=?, cli_phone=?, cli_balance=? WHERE cli_id=?";
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		int rows = 0;
@@ -127,6 +132,7 @@ public class ClientDao {
 			conn = DBConnection.getConnection();
 			stmt = conn.prepareStatement(SQL_UPDATE);
 			int i = 1;
+			stmt.setString(i++, client.getNif());
 			stmt.setString(i++, client.getName());
 			stmt.setString(i++, client.getSurname());
 			stmt.setString(i++, client.getEmail());

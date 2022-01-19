@@ -58,7 +58,6 @@ private static final long serialVersionUID = -7558166539389234332L;
 			this.showListClient(request, response);
 		}
 	}
-
 	private void showListClient(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Client> clientes = new ClientDao().listar();
 
@@ -70,7 +69,7 @@ private static final long serialVersionUID = -7558166539389234332L;
 		session.setAttribute("totalClientes", clientes.size());
 		session.setAttribute("saldoTotal", this.calcularSaldoTotal(clientes));
 
-		// request.getRequestDispatcher("main.jsp").forward(request, response);
+		//request.getRequestDispatcher("main.jsp").forward(request, response);
 		response.sendRedirect("main.jsp");
 	}
 
@@ -88,6 +87,7 @@ private static final long serialVersionUID = -7558166539389234332L;
 		//request.setCharacterEncoding("UTF-8");
 		
 		// recuperamos los valores del formulario agregarCliente
+		String nif = request.getParameter("nif");
 		String nombre = request.getParameter("nombre");
 		String apellido = request.getParameter("apellido");
 		String email = request.getParameter("email");
@@ -99,9 +99,10 @@ private static final long serialVersionUID = -7558166539389234332L;
 		}
 
 		// Creamos el objeto de cliente (modelo)
-		Client cliente = new Client(nombre, apellido, email, telefono, saldo);
+		Client cliente = new Client(nif,nombre, apellido, email, telefono, saldo);
 
 		// Insertamos el nuevo objeto en la base de datos
+		System.out.println("nif cliente insertar: "+nif);
 		int registrosModificados = new ClientDao().create(cliente);
 		System.out.println("Registres modificats:" + registrosModificados);
 
@@ -115,6 +116,7 @@ private static final long serialVersionUID = -7558166539389234332L;
 		
 		// Recuperam els valors del formulari editClient
 		int idCliente = Integer.parseInt(request.getParameter("idClient"));
+		String nif = request.getParameter("nif");
 		String nombre = request.getParameter("nombre");
 		System.out.println("Nombre:" + nombre);
 		
@@ -128,7 +130,7 @@ private static final long serialVersionUID = -7558166539389234332L;
 		}
 
 		// Creamos el objeto de cliente (modelo)
-		Client cliente = new Client(idCliente, nombre, apellido, email, telefono, saldo);
+		Client cliente = new Client(idCliente,nif, nombre, apellido, email, telefono, saldo);
 
 		// Modificar el objeto en la base de datos
 		int registrosModificados = new ClientDao().update(cliente);
